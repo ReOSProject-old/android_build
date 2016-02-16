@@ -1562,7 +1562,7 @@ name := $(TARGET_PRODUCT)
 ifeq ($(TARGET_BUILD_TYPE),debug)
   name := $(name)_debug
 endif
-name := $(name)-ota-$(FILE_NAME_TAG)
+name := ReOS-$(TARGET_DEVICE)_$(RE_VERSION)_OTA_$(RE_MINOR_VERSION)_all_$(shell date +%Y%m%d%H%M).zip
 
 INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
 
@@ -1578,7 +1578,7 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
 	   $(if $(OEM_OTA_CONFIG), -o $(OEM_OTA_CONFIG)) \
 	   $(BUILT_TARGET_FILES_PACKAGE) $@
 
-CUSTOM_TARGET_PACKAGE := $(PRODUCT_OUT)/ReOS_$(TARGET_DEVICE)-$(PLATFORM_SDK_VERSION)-OTA-$(RE_VERSION)-$(shell date +%Y%m%d%h%m).zip
+CUSTOM_TARGET_PACKAGE := $(PRODUCT_OUT)/ReOS-$(TARGET_DEVICE)_$(RE_VERSION)_OTA_$(RE_MINOR_VERSION)_all_$(shell date +%Y%m%d%H%M).zip
 
 .PHONY: otapackage bacon
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
